@@ -98,7 +98,9 @@ endif()
 
 add_subdirectory (src)
 
+if(BUILDTEST)
 add_subdirectory (test)
+endif()
 
 add_subdirectory (examples)
 if(BUILDDOC)
