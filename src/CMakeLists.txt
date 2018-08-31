@@ -9,7 +9,7 @@ set_target_properties(${LIB_NAME} PROPERTIES VERSION ${VERSION} SOVERSION ${PROJ
 TARGET_LINK_LIBRARIES( ${LIB_NAME}
    ${DLT_LIBRARIES}
    ${CPP_LIBS}
-   pthread
+   Threads::Threads
 )
 
 INSTALL(TARGETS ${LIB_NAME}

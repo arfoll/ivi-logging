@@ -3,7 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifndef __BIONIC__
 #include <execinfo.h>
+#endif
+
 #include <cxxabi.h>
 #include <sstream>
 #include <sstream>
@@ -14,6 +18,9 @@ std::string getStackTrace(unsigned int max_frames) {
 	std::stringstream ss;
 
 	ss << std::endl;
+#ifdef __BIONIC__
+    ss << "<empty, possibly corrupt>";
+#else
 
 	// storage array for stack trace address data
 	void **addrlist = new void*[max_frames + 1];
@@ -85,7 +92,7 @@ std::string getStackTrace(unsigned int max_frames) {
 	}
 
 	delete [] addrlist;
-
+#endif
 	return ss.str();
 
 }
